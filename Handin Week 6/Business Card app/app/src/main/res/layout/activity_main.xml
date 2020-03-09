@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/frontPageFromContact"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/frontPageText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Tesla!"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/tesla" />
+
+        <Button
+            android:id="@+id/aboutPageFromFront"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toAboutPage"
+            android:text="About" />
+
+        <Button
+            android:id="@+id/contactPageFromFront"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toContactPage"
+            android:text="Contact" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
