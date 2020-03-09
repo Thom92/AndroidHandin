@@ -13,8 +13,10 @@ public class Main3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        toFrontPage();
+        toAboutPage();
     }
-    public void toFrontPage(View view)
+    public void toFrontPage()
     {
         changePage = findViewById(R.id.frontPageFromContact);
         changePage.setOnClickListener(new View.OnClickListener() {
@@ -24,7 +26,7 @@ public class Main3Activity extends AppCompatActivity {
             }
         });
     }
-    public void toAboutPage(View view)
+    public void toAboutPage()
     {
         changePage = findViewById(R.id.aboutPageFromContact);
         changePage.setOnClickListener(new View.OnClickListener() {

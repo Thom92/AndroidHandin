@@ -14,10 +14,11 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        toContactPage();
+        toAboutPage();
 
     }
-    public void toAboutPage(View view)
+    public void toAboutPage()
     {
         changePage = (Button) findViewById(R.id.aboutPageFromFront);
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
-    public void toContactPage(View view)
+    public void toContactPage()
     {
         changePage = (Button) findViewById(R.id.contactPageFromFront);
         changePage.setOnClickListener(new View.OnClickListener() {

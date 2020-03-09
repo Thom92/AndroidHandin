@@ -13,8 +13,11 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        toFrontPage();
+        toContactPage();
     }
-    public void toFrontPage(View view)
+    public void toFrontPage()
     {
         changePage = (Button) findViewById(R.id.frontPageFromAbout);
 
@@ -25,7 +28,7 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
     }
-    public void toContactPage(View view)
+    public void toContactPage()
     {
         changePage = (Button) findViewById(R.id.contactPageFromAbout);
 
