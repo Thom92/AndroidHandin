@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "696194837063",
+    "firebase_url": "https://fir-hello-923df.firebaseio.com",
+    "project_id": "fir-hello-923df",
+    "storage_bucket": "fir-hello-923df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696194837063:android:544833dd61186142c61f62",
+        "android_client_info": {
+          "package_name": "com.example.firebasehello"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696194837063-73ijc4qumdo6m3nis3j59k0ggn0kfd43.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWHzLOXw1im2Jbxpsgp5kIT9GoE6_EC6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696194837063-73ijc4qumdo6m3nis3j59k0ggn0kfd43.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
