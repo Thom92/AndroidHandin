@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
         import android.os.Bundle;
         import android.text.Editable;
         import android.text.TextWatcher;
-        import android.widget.EditText;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
 
 public class EditMode extends AppCompatActivity {
 
@@ -15,11 +17,11 @@ public class EditMode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_mode);
 
-        EditText editText = (EditText) findViewById(R.id.editText2);
+        EditText editText = findViewById(R.id.noteid);
 
         Intent intent = getIntent();
-        //-1 because that id is imposible to get
-        final int noteId = intent.getIntExtra("noteId", -1);
+        //-1 because that id is impossible to get
+        final int noteId = intent.getIntExtra("NOTE_ID", -1);
 
         if (noteId != -1){
             editText.setText(MainActivity.list.get(noteId));
@@ -42,6 +44,12 @@ public class EditMode extends AppCompatActivity {
                 MainActivity.list.set(noteId, String.valueOf(s));
             }
         });
+
+    }
+    public void toMainActivity(View view)
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

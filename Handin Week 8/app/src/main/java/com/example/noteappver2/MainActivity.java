@@ -2,12 +2,10 @@ package com.example.noteappver2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 import android.content.Intent;
@@ -44,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editText = findViewById(R.id.editText);
+        editText = findViewById(R.id.enterHeadline);
         listView = findViewById(R.id.listView);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, list);
         listView.setAdapter(adapter);
@@ -56,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
                 inEditMode = true;
                 editText.setText(list.get(position));
                 currentRow = position;
-                Intent intent = new Intent(getApplicationContext(), EditMode.class);
-                intent.putExtra("noteId", position);
+                Intent intent = new Intent(MainActivity.this, EditMode.class);
+                intent.putExtra("NOTE_ID", currentRow);
                 startActivity(intent);
             }
         });
@@ -81,12 +79,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-    //save button function. Adds entries to the list (listView) from editText.
     public void save(View view){
         String s = editText.getText().toString();
         FileOutputStream fos = null;
@@ -129,46 +121,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Saved to" + getFilesDir() + "/" + FILE, Toast.LENGTH_LONG).show();
         }
 
-
     }
-
-    public void load(View view){
-        FileInputStream fis = null;
-
-        try {
-            fis = openFileInput(FILE);
-            InputStreamReader inputStreamReader = new InputStreamReader(fis);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            StringBuilder stringBuilder = new StringBuilder();
-            String text;
-
-            //Do the following if there is a new line
-            while((text = bufferedReader.readLine()) != null){
-                //appends the new line contained in the text
-                //then appends the string with a new line
-                stringBuilder.append(text).append("\n");
-            }
-
-            editText.setText(stringBuilder.toString());
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            if(fis != null){
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-
-
-
 
 }
