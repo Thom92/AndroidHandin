@@ -39,6 +39,18 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+    public void toEmployeePage()
+    {
+        changePage = findViewById(R.id.employeepageFromFront);
+        changePage.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                employeePage();
+            }
+        });
+
+    }
     public void aboutPage()
     {
         Intent intent = new Intent(this, Main2Activity.class);
@@ -49,6 +61,12 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, Main3Activity.class);
         startActivity(intent);
     }
+    public void employeePage()
+    {
+        Intent intent = new Intent(this, EmployeeActivity.class);
+        startActivity(intent);
+    }
+
 
 
 

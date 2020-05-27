@@ -43,6 +43,12 @@
             android:layout_height="wrap_content"
             android:onClick="toContactPage"
             android:text="Contact" />
+        <Button
+            android:id="@+id/employeepageFromFront"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toEmployeePage"
+            android:text="Employee"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

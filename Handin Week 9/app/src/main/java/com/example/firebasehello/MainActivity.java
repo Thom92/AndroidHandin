@@ -2,8 +2,13 @@ package com.example.firebasehello;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     MyRecycleViewAdapter adapter;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerView;
+    Button changePage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
