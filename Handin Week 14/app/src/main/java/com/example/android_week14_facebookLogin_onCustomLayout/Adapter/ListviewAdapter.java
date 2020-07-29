@@ -1,6 +1,6 @@
-package com.example.customlayout.adapter;
-import com.example.customlayout.R;
-import com.example.customlayout.model.ProgrammingLanguages;
+package com.example.android_week14_facebookLogin_onCustomLayout.Adapter;
+
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,28 +14,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.customlayout.model.ProgrammingLanguages;
+import com.example.android_week14_facebookLogin_onCustomLayout.Model.Fighter;
+import com.example.android_week14_facebookLogin_onCustomLayout.R;
 
 import java.util.List;
 
-public class ListviewAdapter extends ArrayAdapter<ProgrammingLanguages> { //Needs to extend arrayadapter, type fighter
+public class ListviewAdapter extends ArrayAdapter<Fighter> { //Needs to extend arrayadapter, type fighter
 
-    Context context; //Context is needed to inflate
+    Context mCtx; //Context is needed to inflate
     int resource;
-    List<ProgrammingLanguages> languagesList;
+    List<Fighter> fighterList;
 
     //Constructor adapter
-    public ListviewAdapter(Context context, int resource, List<ProgrammingLanguages> languagesListn){
-        super(context,resource,languagesListn);
-        this.context = context;
+    public ListviewAdapter(Context mCtx, int resource, List<Fighter> fighterList){
+        super(mCtx,resource,fighterList);
+        this.mCtx = mCtx;
         this.resource = resource;
-        this.languagesList = languagesListn;
+        this.fighterList = fighterList;
     }
 
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(context); //Inflater
+        LayoutInflater inflater = LayoutInflater.from(mCtx); //Inflater
 
         View view = inflater.inflate(resource,null); //To inflate the view
         TextView textViewName = view.findViewById(R.id.textViewName);
@@ -43,9 +44,10 @@ public class ListviewAdapter extends ArrayAdapter<ProgrammingLanguages> { //Need
         ImageView imageView = view.findViewById(R.id.imageView);
 
         //All the data to be displayed
-        ProgrammingLanguages languages = languagesList.get(position);
-        textViewName.setText(languages.getName());
-        imageView.setImageDrawable(context.getResources().getDrawable(languages.getImage()));
+        Fighter fighter = fighterList.get(position); //Fighter object of specified position
+        textViewName.setText(fighter.getName());
+        textViewSport.setText(fighter.getSport());
+        imageView.setImageDrawable(mCtx.getResources().getDrawable(fighter.getImage())); //deprecated method but works
 
         //Anonymous class for onclick listener
         view.findViewById(R.id.buttonDelete).setOnClickListener(new View.OnClickListener() {
@@ -59,14 +61,14 @@ public class ListviewAdapter extends ArrayAdapter<ProgrammingLanguages> { //Need
         return view;
     }
     private void removeItem(final int index){ //delete method, final cause its an innerclass
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Have you had enough of a programming language?");
+        AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
+        builder.setTitle("Do you wish to delete the fighter?");
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //Will delete the selected fighter.
-                languagesList.remove(index);
+                fighterList.remove(index);
                 notifyDataSetChanged();
             }
         });

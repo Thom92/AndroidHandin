@@ -1,4 +1,4 @@
-package com.example.customlayout;
+package com.example.android_week14_facebookLogin_onCustomLayout;
 
 import org.junit.Test;
 

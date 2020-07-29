@@ -1,4 +1,4 @@
-package com.example.customlayout;
+package com.example.android_week14_facebookLogin_onCustomLayout;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.customlayout", appContext.getPackageName());
+        assertEquals("com.example.android_week14_facebookLogin_onCustomLayout", appContext.getPackageName());
     }
 }

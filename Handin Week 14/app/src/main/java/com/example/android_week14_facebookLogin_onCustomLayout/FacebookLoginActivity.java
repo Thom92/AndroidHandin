@@ -1,4 +1,4 @@
-package com.example.customlayout;
+package com.example.android_week14_facebookLogin_onCustomLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.customlayout.Auth.FacebookManager;
+import com.example.android_week14_facebookLogin_onCustomLayout.Auth.FacebookManager;
 import com.facebook.login.widget.LoginButton;
 
 public class FacebookLoginActivity extends AppCompatActivity {

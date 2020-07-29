@@ -31,7 +31,7 @@
         android:layout_toEndOf="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
         android:paddingTop="10dp"
-        android:text="Language"
+        android:text="MMA"
         android:textAlignment="center"
         android:textSize="25dp"
         android:textStyle="bold" />
@@ -43,8 +43,8 @@
         android:layout_alignBottom="@+id/imageView"
         android:layout_toEndOf="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
-        android:background="@color/DarkGreen"
-        android:text="Remove" />
+        android:background="#FF0000"
+        android:text="Delete" />
 
 
 </RelativeLayout>

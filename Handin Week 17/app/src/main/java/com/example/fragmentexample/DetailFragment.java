@@ -43,6 +43,7 @@ public class DetailFragment extends Fragment {
                 try {
                     while ((token1 = reader1.readLine()) != null) {
                         sb1.append(token1 + "\n");
+
                     }
                     textView.setText(sb1);
                     file1.close();

@@ -11,8 +11,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
     //Output field
     private ListView listView;
     private ArrayList<String> list =  new ArrayList<>();
-
+    Button changeActivity;
     private boolean inEditMode = false;
     private int currentRow = -1;
     private ArrayAdapter<String> adapter;
-
-
+    Button save;
+    String s;
 
 
     @Override
@@ -45,13 +47,12 @@ public class MainActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.editText);
         listView = findViewById(R.id.listView);
-
-
+        changeActivity = findViewById(R.id.changeActivity);
+        save = findViewById(R.id.save);
         //The ArrayAdapter returns a view for each object in a collection
         //... of data Objects, provided by the user
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, list);
         listView.setAdapter(adapter);
-
         //This method selects item on list
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -61,7 +62,27 @@ public class MainActivity extends AppCompatActivity {
                 currentRow = position;
             }
         });
-
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                s = editText.getText().toString();
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                intent.putExtra("text", s);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void changeActivity(View view)
+    {
+        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+        intent.putExtra("text", s);
+        startActivity(intent);
+    }
+    public String saveText(String s)
+    {
+        s = editText.getText().toString();
+        return s;
     }
 
     public void ChangeColour(View view) {

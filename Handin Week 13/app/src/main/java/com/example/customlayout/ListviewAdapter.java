@@ -13,8 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.customlayout.model.ProgrammingLanguages;
-
 import java.util.List;
 
 public class ListviewAdapter extends ArrayAdapter<ProgrammingLanguages> { //Needs to extend arrayadapter, type fighter
@@ -37,13 +35,10 @@ public class ListviewAdapter extends ArrayAdapter<ProgrammingLanguages> { //Need
         LayoutInflater inflater = LayoutInflater.from(context); //Inflater
 
         View view = inflater.inflate(resource,null); //To inflate the view
-        TextView textViewName = view.findViewById(R.id.textViewName);
-        TextView textViewSport = view.findViewById(R.id.textViewSport);
         ImageView imageView = view.findViewById(R.id.imageView);
 
         //All the data to be displayed
         ProgrammingLanguages languages = languagesList.get(position);
-        textViewName.setText(languages.getName());
         imageView.setImageDrawable(context.getResources().getDrawable(languages.getImage()));
 
         //Anonymous class for onclick listener

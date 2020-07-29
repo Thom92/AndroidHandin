@@ -1,4 +1,4 @@
-package com.example.customlayout.Auth;
+package com.example.android_week14_facebookLogin_onCustomLayout.Auth;
 
 
 import android.app.Activity;
@@ -30,6 +30,8 @@ public class FacebookManager {
 
             @Override
             public void onCancel() {
+                System.out.println("U canceled bro");
+
             }
 
             @Override

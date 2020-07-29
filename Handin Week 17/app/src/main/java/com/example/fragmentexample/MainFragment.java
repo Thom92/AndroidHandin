@@ -27,9 +27,7 @@ public class MainFragment extends Fragment {
         //Inflate the view first
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
 
-        final String[] menuItems = {"First Article", "Second Article",
-        "Third Article",
-        "Fourth Article"};
+        final String[] menuItems = {"First Article", "Second Article", "Third Article"};
 
         ListView listView = view.findViewById(R.id.mainMenuListview);
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,menuItems);
@@ -45,7 +43,7 @@ public class MainFragment extends Fragment {
                Bundle bundle = new Bundle();
                bundle.putInt("key",position);
                detailFragment.setArguments(bundle);
-               fragmentManager.beginTransaction(    ).replace(R.id.container, detailFragment).commit(); //replace fragment
+               fragmentManager.beginTransaction().replace(R.id.container, detailFragment).addToBackStack(null).commit(); //replace fragment
            }
        });
 

@@ -5,29 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_toRightOf="@+id/imageView"
-        android:paddingBottom="10dp"
-        android:text="Anderson Silva"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:textStyle="bold" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp" />
 
     <TextView
-        android:id="@+id/textViewSport"
+        android:id="@+id/languageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewName"
         android:layout_toEndOf="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
         android:paddingTop="10dp"
@@ -45,6 +31,18 @@
         android:layout_toRightOf="@+id/imageView"
         android:background="@color/DarkGreen"
         android:text="Remove" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonDelete"
+        android:layout_alignBottom="@+id/buttonDelete"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="-109dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
 
 
 </RelativeLayout>

@@ -10,6 +10,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -35,15 +37,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationManager locationManager;;
     LocationListener locationListener;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    Button saveLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_googlemaps);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this); //waits asyncro. to ge the map, this class handles map
+
     }
 
     private void setNewMarker(final Context c)//To be called in onMapReady
@@ -88,7 +92,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             GeoPoint geoPoint = documentSnapshot.getGeoPoint("position");
                             LatLng latLng = new LatLng(geoPoint.getLatitude(), geoPoint.getLongitude());
                             mMap.addMarker(new MarkerOptions().position(latLng).title(title));
-
                         }
                     }
                 });
@@ -96,40 +99,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
 
-                updateMap(location);
-            }
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151); //set coords
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney")); //add marker
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney)); //auto move map to marker
 
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
+        //Home
+        LatLng home = new LatLng(55.701381, 12.525205);
+        mMap.addMarker(new MarkerOptions().position(home).title("Home"));
 
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-
-            }
-        };
-        setNewMarker(MapsActivity.this);
+        setNewMarker(MapsActivity.this); //Calls the set new marker method with this class as context
         readCoordinates();
-        }
-        public void updateMap (Location location)
-        {
-            LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
-
-            mMap.clear();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
-            mMap.addMarker(new MarkerOptions().position(userLocation).title("Your location"));
-
-
-        }
+    }
 }

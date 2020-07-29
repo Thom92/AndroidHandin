@@ -7,9 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import androidx.annotation.Nullable;
@@ -31,10 +38,11 @@ import com.example.firebasehello.storage.MemoryStorage;
 public class MainActivity extends AppCompatActivity {
     private final static String notes = "notes";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    TextView editText1;
+    TextView editText2;
     MyRecycleViewAdapter adapter;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerView;
-    Button changePage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         startNoteListener();
     }
+
 
     private void editNote() {
         //edit
@@ -67,22 +76,31 @@ public class MainActivity extends AppCompatActivity {
         db.collection(notes).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot values, @Nullable FirebaseFirestoreException e) {
-                MemoryStorage.notes.clear();
-                for (DocumentSnapshot snap : values.getDocuments()) {
-                    Log.i("all", "read from FB " + snap.getId() + " " + snap.get("body").toString());
-                    MemoryStorage.notes.add(new Note(snap.getId(),
-                            snap.get("head").toString(), snap.get("body").toString()));
+                if (e != null) {
+
+                } else {
+                    MemoryStorage.notes.clear();
+                    for (DocumentSnapshot snap : values.getDocuments()) {
+                        Log.i("all", "read from FB " + snap.getId());
+                        MemoryStorage.notes.add(new Note(snap.getId(),
+                                snap.get("head").toString(), snap.get("body").toString()));
+                    }
+                    adapter.notifyDataSetChanged();
                 }
-                adapter.notifyDataSetChanged();
             }
         });
     }
 
-    private void addNewNote() {
+    public void addNewNote(View view) {
         DocumentReference docRef = db.collection(notes).document();
+        editText1 = findViewById(R.id.editTextTextPersonName);
+        editText2 = findViewById(R.id.editTextTextPersonName2);
+        String s = editText1.getText().toString();
+        String k = editText2.getText().toString();
         Map<String, String> map = new HashMap<>();
-        map.put("head", "new headline 2");
-        map.put("body", "new body 2");
+
+        map.put("head", s);
+        map.put("body", k);
         docRef.set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.imageresize.Controller.ImageController;
@@ -16,13 +17,22 @@ public class MainActivity extends AppCompatActivity {
 
     public ImageView imageView;
     private ImageController ic;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageView = findViewById(R.id.imageView);
+        button = findViewById(R.id.rotation);
         ic = new ImageController(this);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView.animate().rotation(360).setDuration(2000);
+            }
+        });
+
     }
 
     public void photoRollBtnPressed(View view){
@@ -62,10 +72,7 @@ public class MainActivity extends AppCompatActivity {
         Bitmap bitmap = imageView.getDrawingCache(); //Turns the imageview into a bitmap
         MediaStore.Images.Media.insertImage(getContentResolver(),bitmap, "img.png", "yourDescription");
     }
-    public void rotate()
-    {
-        imageView.animate().rotation(900).setDuration(5000);
-    }
+
 
 }
 
